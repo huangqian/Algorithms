@@ -14,32 +14,6 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 @RunWith(BlockJUnit4ClassRunner.class)
 public class SortsExample {
 
-    @Test
-    public void testSelectionSort(){
-	Integer[] array = new Integer[]{ 100, 76, 1 , 45 , 33, 89 , 0};
-	Integer[] result = new Integer[]{0, 1, 33, 45, 76, 89, 100};
-	Sorts.selectionSort(array);
-	for(int i : array){
-	    System.out.print( i + " ");
-	}
-	Assert.assertArrayEquals(result,array);
-    }
-
-
-    @Test
-    public void testUserOrderByAge(){
-	User[] users = new User[]{ new User("Jerry", 28), new User("Mark", 56), new User("John", 18)};
-	System.out.println("排序前:");
-	for(User user : users){
-	    System.out.println(user);
-	}
-	Sorts.selectionSort(users);
-	System.out.println("排序后:");
-	for(User user : users){
-	    System.out.println(user);
-	}
-    }
-
     static class User implements Comparable<User>{
 
 	private String name;
@@ -81,14 +55,56 @@ public class SortsExample {
     }
 
     @Test
+    public void testSelectionSort(){
+	Integer[] array = new Integer[]{ 100, 76, 1 , 45 , 33, 89 , 0};
+	Integer[] result = new Integer[]{0, 1, 33, 45, 76, 89, 100};
+	Sorts.selectionSort(array);
+	for(int i : array){
+	    System.out.print( i + " ");
+	}
+	Assert.assertArrayEquals(result,array);
+    }
+
+
+    @Test
+    public void testObjSelectionSort(){
+	User[] users = new User[]{ new User("Jerry", 28), new User("Mark", 56), new User("John", 18)};
+	System.out.println("排序前:");
+	for(User user : users){
+	    System.out.println(user);
+	}
+	Sorts.selectionSort(users);
+	System.out.println("排序后:");
+	for(User user : users){
+	    System.out.println(user);
+	}
+    }
+
+
+
+    @Test
     public void testInsertionSort(){
 	Integer[] array = new Integer[]{ 100, 76, 1 , 45 , 33, 89 , 0};
 	Integer[] result = new Integer[]{0, 1, 33, 45, 76, 89, 100};
 	Sorts.insertionSort(array);
 	System.out.println("插入排序:");
 	for(int i : array){
-	    System.out.print( i + " ");
+	    System.out.print(i + " ");
 	}
 	Assert.assertArrayEquals(result,array);
+    }
+
+    @Test
+    public void testObjInsertionSort(){
+	User[] users = new User[]{ new User("Jerry", 28), new User("Mark", 56), new User("John", 18)};
+	System.out.println("排序前:");
+	for(User user : users){
+	    System.out.println(user);
+	}
+	Sorts.insertionSort(users);
+	System.out.println("排序后:");
+	for(User user : users){
+	    System.out.println(user);
+	}
     }
 }
