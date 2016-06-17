@@ -107,4 +107,16 @@ public class SortsExample {
 	    System.out.println(user);
 	}
     }
+
+    @Test
+    public void testShellSort(){
+	Integer[] array = new Integer[]{ 100, 76, 1 , 45 , 22, 33, 89 , 0};
+	Integer[] result = new Integer[]{0, 1, 22 , 33, 45, 76, 89, 100};
+	Sorts.shellSort(array);
+	System.out.println("希尔排序:");
+	for(int i : array){
+	    System.out.print(i + " ");
+	}
+	Assert.assertArrayEquals(result,array);
+    }
 }

@@ -65,6 +65,48 @@ public class Sorts {
     }
 
 
+    /***
+     * 希尔排序
+     * 	希尔排序是一种改进的插入排序.它是通过一定间隔的元素来工作;各趟比较所用的距离随着算法的进行减小,知道指教相邻的元素的最后一趟为止.
+     * 	希尔排序的比较的距离也叫增量序列.有一种流行(但是不好)的选择是使用shell推荐的学列:h0 = arr.length/2和 h(k) = h(k+1)/2
+     * @param array 待排序数组
+     * @param <T> 数组元素类型
+     */
+    public static <T extends Comparable<T>> void shellSort(T[] array){
+	if(array == null) return;
+	//构造增量因子
+	int h = array.length / 2;
+	while(h >= 1){
+
+	    for(int n = 0; n < h ; n++) {
+		//每次选择间隔h的元素进行插入排序
+		for (int i = n + h; i < array.length; i += h) {
+		    int p = i;
+		    for (int j = n; j < i; j += h) {
+			if (less(array[i], array[j])) {
+			    {
+				p = j;
+				break;
+			    }
+			}
+		    }
+		    //插入
+		    T t = array[i];
+		    int nextPointer ;
+		    for (int k = i; k > p; k -= h){
+			nextPointer = k -h;
+			array[k] = array[nextPointer];
+		    }
+		    array[p] = t;
+		}
+	    }
+	    //重新计算增量因子
+	    h = h/2;
+	};
+
+    }
+
+
 
     private static <T extends Comparable<T>> boolean less( T a, T b){
 	return !(a == null || b == null) && b.compareTo(a) > 0 ;
