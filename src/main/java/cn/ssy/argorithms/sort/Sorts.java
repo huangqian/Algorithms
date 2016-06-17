@@ -55,11 +55,12 @@ public class Sorts {
 		}
 	    }
 	    //插入数据到数组中
-	    T t = array[i];
-	    for(int k = i ; k > p; ){
-		array[k] = array[--k];
-	    }
-	    array[p] = t;
+	    moveToLeft(array,i,p);
+//	    T t = array[i];
+//	    for(int k = i ; k > p; ){
+//		array[k] = array[--k];
+//	    }
+//	    array[p] = t;
 	}
 
     }
@@ -91,13 +92,14 @@ public class Sorts {
 			}
 		    }
 		    //插入
-		    T t = array[i];
-		    int nextPointer ;
-		    for (int k = i; k > p; k -= h){
-			nextPointer = k -h;
-			array[k] = array[nextPointer];
-		    }
-		    array[p] = t;
+		    moveToLeft(array,i,p,h);
+//		    T t = array[i];
+//		    int nextPointer ;
+//		    for (int k = i; k > p; k -= h){
+//			nextPointer = k -h;
+//			array[k] = array[nextPointer];
+//		    }
+//		    array[p] = t;
 		}
 	    }
 	    //重新计算增量因子
@@ -116,6 +118,20 @@ public class Sorts {
 	T t = arr[idx1];
 	arr[idx1] = arr[idx2];
 	arr[idx2] = t;
+    }
+
+    private static <T> void moveToLeft(T[] array,int sourcePointer, int distPointer){
+	moveToLeft(array,sourcePointer,distPointer,1);
+    }
+
+    private static <T> void moveToLeft(T[] array, int sourcePointer, int distPointer, int step){
+	T t = array[sourcePointer];
+	int nextPointer ;
+	for (int k = sourcePointer; k > distPointer; k -= step){
+	    nextPointer = k -step;
+	    array[k] = array[nextPointer];
+	}
+	array[distPointer] = t;
     }
 
 
