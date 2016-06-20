@@ -25,4 +25,14 @@ public class MergeSortExample {
 	    System.out.println(element);
 	}
     }
+
+    @Test
+    public void testSorts(){
+	Integer[] array = new Integer[]{10000, 300, 2759878, 12, 89080, 32, 4221423};
+	MergeSort.sorts(array);
+	System.out.println("合并排序:");
+	for(Integer element : array){
+	    System.out.println(element);
+	}
+    }
 }

@@ -60,7 +60,26 @@ public class MergeSort {
 	if(array == null) return;
 	//将原始数组复制一份,用于归并,原数组存储归并结果
 	T[] aux = Arrays.copyOf(array,array.length);
-	sort(array, 0 ,array.length - 1,aux);
+	sort(array, 0, array.length - 1, aux);
+    }
+
+
+    /***
+     * 自底向上的归并排序.
+     * 	从相邻的两个元素进行合并,子数组从个数从1开始,每次倍增,进行合并
+     * @param array 待排序的数组
+     * @param <T> 数组元素类型
+     */
+    public static <T extends Comparable<T>> void sorts(T[] array){
+	if(array == null || array.length == 0) return;
+	T[] tmp = Arrays.copyOf(array,array.length);
+	//从相邻的两个元素构成最小的有序数组开始,归并,1 ,2 , 8 ...
+	for( int i = 1 ; i < array.length; i *= 2){//子数组的大小
+	    for(int j = 0; j < array.length - i ; j += (2*i)){
+		MergeSort.merge(array, j, j + i - 1, Math.min(j + 2 * i - 1, array.length - 1), tmp);
+	    }
+
+	}
     }
 
 }
