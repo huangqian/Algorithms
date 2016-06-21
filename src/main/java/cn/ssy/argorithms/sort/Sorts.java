@@ -66,6 +66,25 @@ public class Sorts {
     }
 
 
+    public static <T extends Comparable<T>> void insertionSort(T[] array, int left, int right){
+	if( array == null) return;
+	for(int i = left + 1; i < right; i++){
+	    int p = i;
+	    //选找插入的位置
+	    for(int j = left; j < i; j++){
+		if(less(array[i],array[j])){
+		    p = j;
+		    break;
+		}
+	    }
+	    //插入数据到数组中
+	    moveToLeft(array,i,p);
+	}
+
+    }
+
+
+
     /***
      * 希尔排序
      * 	希尔排序是一种改进的插入排序.它是通过一定间隔的元素来工作;各趟比较所用的距离随着算法的进行减小,知道指教相邻的元素的最后一趟为止.
@@ -114,7 +133,7 @@ public class Sorts {
 	return !(a == null || b == null) && b.compareTo(a) > 0 ;
     }
 
-    private static <T> void swap(T[] arr, int idx1, int idx2){
+    public static <T> void swap(T[] arr, int idx1, int idx2){
 	T t = arr[idx1];
 	arr[idx1] = arr[idx2];
 	arr[idx2] = t;

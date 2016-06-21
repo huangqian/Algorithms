@@ -119,4 +119,16 @@ public class SortsExample {
 	}
 	Assert.assertArrayEquals(result,array);
     }
+
+    @Test
+    public void testQuickSort(){
+	Integer[] array = new Integer[]{ 100, 76, 1 , 45 , 22, 33, 89 , 0};
+	Integer[] result = new Integer[]{0, 1, 22 , 33, 45, 76, 89, 100};
+	QuickSort.sort(array);
+	System.out.println("快速排序:");
+	for(int i : array){
+	    System.out.print(i + " ");
+	}
+	//Assert.assertArrayEquals(result, array);
+    }
 }
