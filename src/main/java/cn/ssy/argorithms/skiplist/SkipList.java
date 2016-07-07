@@ -1,5 +1,7 @@
 package cn.ssy.argorithms.skiplist;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
@@ -55,7 +57,7 @@ public class SkipList<E extends Comparable<E>> {
      * 向跳跃表中添加一个元素
      * @param e 被添加的元素
      */
-    public void add(E e){
+    public synchronized void add(E e){
 	LinkedList<SLNode<E>> findStack = getFindPathStack(e);
 	SLNode<E> cursor = findStack.peek();
 	if(cursor.hasData() && cursor.data.compareTo(e) == 0){//相同的元素直接覆盖
@@ -158,8 +160,6 @@ public class SkipList<E extends Comparable<E>> {
 	protected boolean hasData(){
 	    return this.data != null;
 	}
-
-
 
     }
 

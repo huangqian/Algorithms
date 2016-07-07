@@ -56,7 +56,7 @@ public class SkipListMap<K extends Comparable<K>,V> {
      * @param key 添加的键
      * @param value 添加的值
      */
-    public V put(K key, V value){
+    public synchronized V put(K key, V value){
 	LinkedList<SLEntry<K,V>> findStack = getFindPathStack(key);
 	SLEntry<K,V> cursor = findStack.peek();
 	if(cursor.hasKey() && cursor.key.compareTo(key) == 0){//相同的元素直接覆盖
