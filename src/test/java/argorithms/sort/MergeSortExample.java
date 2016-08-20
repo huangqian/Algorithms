@@ -1,4 +1,4 @@
-package cn.ssy.argorithms.sort;
+package argorithms.sort;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

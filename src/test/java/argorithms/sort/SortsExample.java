@@ -1,4 +1,4 @@
-package cn.ssy.argorithms.sort;
+package argorithms.sort;
 
 import org.junit.Assert;
 import org.junit.Test;

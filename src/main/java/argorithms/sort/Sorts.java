@@ -1,6 +1,4 @@
-package cn.ssy.argorithms.sort;
-
-import java.util.Comparator;
+package argorithms.sort;
 
 /**
  * Created with IntelliJ IDEA

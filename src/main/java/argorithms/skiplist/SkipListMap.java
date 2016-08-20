@@ -1,4 +1,4 @@
-package cn.ssy.argorithms.skiplist;
+package argorithms.skiplist;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

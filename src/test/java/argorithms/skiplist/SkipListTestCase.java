@@ -1,4 +1,4 @@
-package cn.ssy.argorithms.skiplist;
+package argorithms.skiplist;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

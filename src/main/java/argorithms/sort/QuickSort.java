@@ -1,7 +1,4 @@
-package cn.ssy.argorithms.sort;
-
-import static cn.ssy.argorithms.sort.Sorts.less;
-import static cn.ssy.argorithms.sort.Sorts.swap;
+package argorithms.sort;
 
 /**
  * 快速排序
@@ -24,17 +21,17 @@ public class QuickSort {
      */
     public static <T extends Comparable<T>> T median3(T[] array, int left, int right){
 	int center = (left + right) / 2;		//中间位置
-	if(less(array[right], array[left])){//array[low] > array[high]
-	    swap(array, left, right);
+	if(Sorts.less(array[right], array[left])){//array[low] > array[high]
+	    Sorts.swap(array, left, right);
 	}
-	if(less(array[center], array[left])){ // array[low] > array[center]
-	    swap(array, left, center);
+	if(Sorts.less(array[center], array[left])){ // array[low] > array[center]
+	    Sorts.swap(array, left, center);
 	}
-	if(less(array[right], array[center])){// array[center] > array[high]
-	    swap(array, center, right);
+	if(Sorts.less(array[right], array[center])){// array[center] > array[high]
+	    Sorts.swap(array, center, right);
 	}
 	//将枢纽元素放在第一个位置,并且返回
-	swap(array, left, center);
+	Sorts.swap(array, left, center);
 	return array[left];
     }
 
@@ -44,16 +41,16 @@ public class QuickSort {
 	    int i = left;
 	    int j = right;
 	    for(; ;){
-		while(i < j && less(array[++i], key)){}
-		while(i < j && less(key, array[--j])){}
+		while(i < j && Sorts.less(array[++i], key)){}
+		while(i < j && Sorts.less(key, array[--j])){}
 		if(i < j){
-		    swap(array, i ,j);
+		    Sorts.swap(array, i ,j);
 		}else{
 		    break;
 		}
 	    }
 	    //将枢纽元放在正确的位置
-	    swap(array,left,i - 1);
+	    Sorts.swap(array,left,i - 1);
 
 	    sort(array, left, i);
 	    sort(array, i+1, right);

@@ -1,7 +1,5 @@
-package cn.ssy.argorithms.skiplist;
+package argorithms.skiplist;
 
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
