@@ -1,8 +1,6 @@
-package leetcode;
+package leetcode.string;
 
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * @author huangqian
@@ -53,14 +51,48 @@ public class LongestPalindrome {
 
 
     /**
+     * 中心扩展法
+     */
+    public String longestPalindromeByCenterExpand(String s) {
+
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+        String ans = s.substring(0, 1);
+        String s1, s2;
+
+        for (int i = 0; i < s.length(); i++) {
+            s1 = centerExpand(s, i - 1, i + 1);
+            if (s1 != null && ans.length() < s1.length()) {
+                ans = s1;
+            }
+            s2 = centerExpand(s, i - 1, i);
+            if (s2 != null && ans.length() < s2.length()) {
+                ans = s2;
+            }
+        }
+        return ans;
+    }
+
+    public String centerExpand(String s, int left, int right) {
+        while (left >= 0 && right < s.length()
+                && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return s.substring(left + 1, right);
+    }
+
+
+    /**
      * 动态规划的递推方案：
      * 构造一个字符串数组ans[]，下表为i的标识输入字符串s在其索引区间0-i之间，ans[i]为最大的回文字符串。
      * 那么它的递推方程式
      * 对于ans[n]
-     *      if(s.charAt(n/2) == s.charAt(n):
-     *          ans[n] = ans[n-1] + s.charAt(n)
-     *      else:
-     *          ans[n] = ans[n-1]
+     * if(s.charAt(n/2) == s.charAt(n):
+     * ans[n] = ans[n-1] + s.charAt(n)
+     * else:
+     * ans[n] = ans[n-1]
      */
     public static String longestPalindromeByDp(String s) {
 
@@ -79,13 +111,14 @@ public class LongestPalindrome {
     public void test1() {
         String s = "babad";
         System.out.println(longestPalindrome(s));
-
+        System.out.println(longestPalindromeByCenterExpand(s));
     }
 
     @Test
     public void test2() {
         String s = "cbbd";
         System.out.println(longestPalindrome(s));
+        System.out.println(longestPalindromeByCenterExpand(s));
 
     }
 
@@ -94,10 +127,21 @@ public class LongestPalindrome {
         String s = "ccc";
         System.out.println(longestPalindrome(s));
 
+        System.out.println(longestPalindromeByCenterExpand(s));
+
     }
 
     @Test
-    public void test4(){
+    public void test5() {
+        String s = "bb";
+        System.out.println(longestPalindrome(s));
+
+        System.out.println(longestPalindromeByCenterExpand(s));
+
+    }
+
+    @Test
+    public void test4() {
         String[][] grid = new String[4][6];
 
         String val = grid[0][1];

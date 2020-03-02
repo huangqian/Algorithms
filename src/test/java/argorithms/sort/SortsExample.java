@@ -129,6 +129,6 @@ public class SortsExample {
 	for(int i : array){
 	    System.out.print(i + " ");
 	}
-	//Assert.assertArrayEquals(result, array);
+	//Assert.assertArrayEquals(result, leetcode.array);
     }
 }

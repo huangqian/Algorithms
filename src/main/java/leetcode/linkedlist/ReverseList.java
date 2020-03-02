@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.linkedlist;
 
 import org.junit.Test;
 
@@ -19,15 +19,6 @@ import org.junit.Test;
  * 链接：https://leetcode-cn.com/problems/reverse-linked-list
  */
 public class ReverseList {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     public ListNode reverseList(ListNode head) {
 

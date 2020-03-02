@@ -54,11 +54,11 @@ public class Sorts {
 	    }
 	    //插入数据到数组中
 	    moveToLeft(array,i,p);
-//	    T t = array[i];
+//	    T t = leetcode.array[i];
 //	    for(int k = i ; k > p; ){
-//		array[k] = array[--k];
+//		leetcode.array[k] = leetcode.array[--k];
 //	    }
-//	    array[p] = t;
+//	    leetcode.array[p] = t;
 	}
 
     }
@@ -110,13 +110,13 @@ public class Sorts {
 		    }
 		    //插入
 		    moveToLeft(array,i,p,h);
-//		    T t = array[i];
+//		    T t = leetcode.array[i];
 //		    int nextPointer ;
 //		    for (int k = i; k > p; k -= h){
 //			nextPointer = k -h;
-//			array[k] = array[nextPointer];
+//			leetcode.array[k] = leetcode.array[nextPointer];
 //		    }
-//		    array[p] = t;
+//		    leetcode.array[p] = t;
 		}
 	    }
 	    //重新计算增量因子

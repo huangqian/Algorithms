@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.array;
 
 /**
  * @author huangqian
@@ -26,9 +26,13 @@ package leetcode;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/median-of-two-sorted-arrays
  */
-public class FindMedianSortedArrays {
+public class MedianOfTwoStoredArrays {
 
-    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+
+        int len1 = nums1 == null ? 0 : nums1.length;
+        int len2 = nums2 == null ? 0 : nums2.length;
+        int mediaIndex = (len1 + len2) / 2;
 
 
         return 0;

@@ -21,13 +21,13 @@ public class QuickSort {
      */
     public static <T extends Comparable<T>> T median3(T[] array, int left, int right){
 	int center = (left + right) / 2;		//中间位置
-	if(Sorts.less(array[right], array[left])){//array[low] > array[high]
+	if(Sorts.less(array[right], array[left])){//leetcode.array[low] > leetcode.array[high]
 	    Sorts.swap(array, left, right);
 	}
-	if(Sorts.less(array[center], array[left])){ // array[low] > array[center]
+	if(Sorts.less(array[center], array[left])){ // leetcode.array[low] > leetcode.array[center]
 	    Sorts.swap(array, left, center);
 	}
-	if(Sorts.less(array[right], array[center])){// array[center] > array[high]
+	if(Sorts.less(array[right], array[center])){// leetcode.array[center] > leetcode.array[high]
 	    Sorts.swap(array, center, right);
 	}
 	//将枢纽元素放在第一个位置,并且返回
