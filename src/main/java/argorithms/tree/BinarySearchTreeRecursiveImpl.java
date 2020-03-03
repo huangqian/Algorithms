@@ -50,13 +50,15 @@ public class BinarySearchTreeRecursiveImpl<K extends Comparable<K>,V> extends Bi
      *
      * @return node numbers
      */
-    public int size() {
+    @Override
+	public int size() {
 	return size(root);
     }
 
     private int size(BSTNode<K,V> node){
-	if(node == null)
-	    return 0;
+	if(node == null) {
+		return 0;
+	}
 	return size(node.getLeft()) + size(node.getRight()) + 1;
     }
 
