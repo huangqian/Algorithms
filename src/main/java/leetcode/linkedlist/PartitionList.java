@@ -22,42 +22,54 @@ import org.junit.Test;
  */
 public class PartitionList {
 
-	public ListNode partition(ListNode head, int x) {
-		if (head == null || head.next == null) {
-			return head;
-		}
-		ListNode ansHead = new ListNode(0);
-		ansHead.next = head;
-		ListNode prev, cur, next;
-		cur = head.val < x ? head.next : head;
-		prev = head.val < x ? head : ansHead;
-		while (cur != null && cur.next != null) {
-			if (cur.next.val < x) {
-				next = cur.next.next;
-				cur.next.next = prev.next;
-				prev.next = cur.next;
-				prev = prev.next;
-				cur.next = next;
-			}
-			cur = cur.next;
+    public ListNode partition(ListNode head, int x) {
 
-		}
-		return ansHead.next;
-	}
+        ListNode ansHead = new ListNode(0);
+        ansHead.next = head;
+        ListNode left, prev, cur;
+        left = ansHead;
+        prev = ansHead;
+        cur = head;
 
-	@Test
-	public void test1() {
-		ListNode head = ListNode.of(1, 4, 3, 2, 5, 2);
-		head.print();
-		ListNode deleteDuplicatesSortedList = partition(head, 3);
-		deleteDuplicatesSortedList.print();
-	}
+        while (cur != null) {
+            if (cur.val < x) {
+                prev.next = cur.next;
+                cur.next = left.next;
+                left.next = cur;
+                prev = prev == left ? prev.next : prev;
+                left = left.next;
+                cur = prev.next;
+            } else {
+                prev = cur;
+                cur = cur.next;
+            }
 
-	@Test
-	public void test2() {
-		ListNode head = ListNode.of(1, 1);
-		head.print();
-		ListNode deleteDuplicatesSortedList = partition(head, 2);
-		deleteDuplicatesSortedList.print();
-	}
+        }
+        return ansHead.next;
+    }
+
+    @Test
+    public void test1() {
+        ListNode head = ListNode.of(1, 4, 3, 2, 5, 2);
+        head.print();
+        ListNode deleteDuplicatesSortedList = partition(head, 3);
+        deleteDuplicatesSortedList.print();
+    }
+
+    @Test
+    public void test2() {
+        ListNode head = ListNode.of(1, 1);
+        head.print();
+        ListNode deleteDuplicatesSortedList = partition(head, 2);
+        deleteDuplicatesSortedList.print();
+    }
+
+    @Test
+    public void test3() {
+        ListNode head = ListNode.of(1, 2, 3);
+        head.print();
+        ListNode deleteDuplicatesSortedList = partition(head, 4);
+        deleteDuplicatesSortedList.print();
+    }
+
 }
