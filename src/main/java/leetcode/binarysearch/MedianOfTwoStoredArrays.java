@@ -1,4 +1,4 @@
-package leetcode.array;
+package leetcode.binarysearch;
 
 /**
  * @author huangqian
@@ -32,10 +32,14 @@ public class MedianOfTwoStoredArrays {
 
         int len1 = nums1 == null ? 0 : nums1.length;
         int len2 = nums2 == null ? 0 : nums2.length;
-        int mediaIndex = (len1 + len2) / 2;
+        int medianIndex = (len1 + len2) / 2;
+        int start1 = 0;
+        int end1 = len1 > 0 ? len1 - 1 : 0;
+        int media1 = (start1 + end1) / 2;
 
 
         return 0;
+
     }
 
 }
