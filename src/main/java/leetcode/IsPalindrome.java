@@ -41,22 +41,6 @@ public class IsPalindrome {
         return true;
     }
 
-    public static boolean isPalindromeByNumber(int x) {
-        if (x < 11) {
-            return false;
-        }
-        int d;
-        int mod;
-        while (x > 9) {
-            mod = x % 10;
-            d = (x / 10);
-            if (mod == d) {
-                return false;
-            }
-            x = x - d * 10 - mod;
-        }
-        return true;
-    }
 
     @Test
     public void test1() {
@@ -70,11 +54,11 @@ public class IsPalindrome {
 
     @Test
     public void test2() {
-        System.out.println(isPalindromeByNumber(1));
-        System.out.println(isPalindromeByNumber(11));
-        System.out.println(isPalindromeByNumber(111));
-        System.out.println(isPalindromeByNumber(1111));
-        System.out.println(isPalindromeByNumber(2112));
-        System.out.println(isPalindromeByNumber(2135312));
+//        System.out.println(isPalindromeByNumber(1));
+//        System.out.println(isPalindromeByNumber(11));
+//        System.out.println(isPalindromeByNumber(111));
+//        System.out.println(isPalindromeByNumber(1111));
+//        System.out.println(isPalindromeByNumber(2112));
+//        System.out.println(isPalindromeByNumber(2135312));
     }
 }
