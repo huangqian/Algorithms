@@ -1,4 +1,4 @@
-package leetcode.array;
+package leetcode.kth;
 
 import org.junit.Test;
 

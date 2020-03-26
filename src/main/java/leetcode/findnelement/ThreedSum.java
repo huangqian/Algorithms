@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.findnelement;
 
 import java.util.*;
 

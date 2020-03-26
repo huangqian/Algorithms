@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.sellstock;
 
 import org.junit.Test;
 

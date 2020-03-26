@@ -1,5 +1,6 @@
-package leetcode.linkedlist;
+package leetcode.tree;
 
+import leetcode.linkedlist.ListNode;
 import org.junit.Test;
 
 /**

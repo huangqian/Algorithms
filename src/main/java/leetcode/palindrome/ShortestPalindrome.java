@@ -1,4 +1,4 @@
-package leetcode.string;
+package leetcode.palindrome;
 
 import org.junit.Test;
 
