@@ -32,59 +32,42 @@ import org.junit.Test;
  */
 public class Candy {
 
+    /**
+     * 思路：
+     * 构造一个数组candy[i]表示第i+1个应该得到的糖果数
+     * 1. 先满足每个人1个颗糖果
+     * 2. 从左到右，挨个和左边相邻的比较，当前节点是否需要增加。
+     * 3. 从右向左挨个和右边相邻的比较，当前节点是否需要增加。
+     * 4. 对
+     */
     public int candy(int[] ratings) {
-        int minCount = 0;
-        int currMinCandyNumber = 1;
-        int pre = 0;
-        for (int i = 1; i < ratings.length; ) {
-            if (ratings[i - 1] == ratings[i]) {
-                while (ratings[i - 1] == ratings[i]) {
-                    i++;
-                }
-                minCount += candy(ratings, pre, i - 1, currMinCandyNumber);
-                pre = i;
-            } else if (ratings[i - 1] > ratings[i]) {
-                while (ratings[i - 1] > ratings[i]) {
-                    i++;
-                }
-                currMinCandyNumber = 1;
-                minCount += candy(ratings, pre, i - 1, currMinCandyNumber);
-                pre = i;
-            } else {
-                while ( i < ratings.length && ratings[i - 1] < ratings[i]) {
-                    i++;
-                }
-                if (pre != 0 && ratings[pre - 1] < ratings[pre]) {
-                    minCount += candy(ratings, pre, i - 1, currMinCandyNumber + 1);
-                } else {
-                    minCount += candy(ratings, pre, i - 1, currMinCandyNumber);
-                }
-                pre = i;
-            }
 
+        if (ratings == null || ratings.length == 0) return 0;
+        //candy[i]数组表示第i+1个个学生应该得到的糖果
+        int[] candys = new int[ratings.length];
+        //满足至少一颗
+        for (int i = 0; i < ratings.length; i++) {
+            candys[i] = 1;
         }
-        return minCount;
-    }
-
-    public int candy(int[] ratings, int start, int end, int min) {
-        if (end < start) return 0;
-        int count = min;
-        int currMinCandies = min;
-        if (ratings[start] == ratings[end]) {
-            count += (min) * (end - start);
-        } else if (ratings[start] < ratings[end]) {
-            for (int i = start + 1; i <= end; i++) {
-                if (ratings[i] > ratings[i - 1]) currMinCandies++;
-                count += currMinCandies;
+        //从左到右，挨个和左边相邻的比较，当前节点是否需要增加。
+        for (int i = 1; i < ratings.length; i++) {
+            if (ratings[i] > ratings[i - 1]) {
+                candys[i] = candys[i - 1] + 1;
             }
-        } else {
-            for (int k = end - 1; k >= start; k--) {
-                if (ratings[k] > ratings[k + 1]) currMinCandies++;
-                count += currMinCandies;
+        }
+        //从右边往左看，挨个和左边相邻的比较，当前节点是否需要增加。
+        for (int k = ratings.length - 2; k >= 0; k--) {
+            if (ratings[k] > ratings[k + 1] && candys[k] <= candys[k + 1]) {
+                candys[k] = candys[k + 1] + 1;
             }
+        }
+        int count = 0;
+        for (int candy : candys) {
+            count += candy;
         }
         return count;
     }
+
 
     @Test
     public void test1() {
@@ -93,8 +76,8 @@ public class Candy {
     }
 
     @Test
-    public void test2(){
-        int[] ratings = {1,2,2};
+    public void test2() {
+        int[] ratings = {1, 2, 2};
         System.out.println(candy(ratings));
     }
 }
