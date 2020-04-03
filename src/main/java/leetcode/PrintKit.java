@@ -32,6 +32,23 @@ public final class PrintKit {
         System.out.println("]");
     }
 
+    public static void printOf(List<String> res) {
+        Iterator<String> iter = res.iterator();
+        System.out.println("[");
+        while (iter.hasNext()) {
+
+            while (iter.hasNext()) {
+                System.out.print(iter.next());
+                if (iter.hasNext()) {
+                    System.out.print(",");
+                }
+                System.out.println();
+            }
+
+        }
+        System.out.println("]");
+    }
+
     public static void print(int[] nums) {
         System.out.print("[");
         for (int i = 0; i < nums.length; i++) {
