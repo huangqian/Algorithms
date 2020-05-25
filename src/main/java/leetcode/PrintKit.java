@@ -1,5 +1,7 @@
 package leetcode;
 
+import leetcode.linkedlist.ListNode;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,6 +33,7 @@ public final class PrintKit {
         }
         System.out.println("]");
     }
+
 
     public static void printOf(List<String> res) {
         Iterator<String> iter = res.iterator();
