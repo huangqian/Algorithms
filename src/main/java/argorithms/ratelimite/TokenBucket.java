@@ -14,7 +14,7 @@ public class TokenBucket {
     private final static long PARK_NANOS = 1L;
 
     //桶的容量
-    private int capacity = 100;
+    private int capacity = 2000;
 
     //当前的数量
     private AtomicInteger size = new AtomicInteger(0);
@@ -23,7 +23,7 @@ public class TokenBucket {
     private int rate = 1000;
 
     //最后访问时间
-    private long lastAccessNanos = System.nanoTime();
+    private volatile long lastAccessNanos = System.nanoTime();
 
     /**
      * 非阻塞的申请令牌
@@ -36,9 +36,17 @@ public class TokenBucket {
         int currSize = (int) Math.min(capacity, size.get() + (nanos - lastAccessNanos) * rate / Math.pow(10, 6));
         if (currSize >= n) {
             //还有可用的令牌，可以访问
-            size.addAndGet(-n);
-            lastAccessNanos = nanos;
-            return true;
+            if (size.addAndGet(-n) > 0) {
+                if (lastAccessNanos < nanos) {
+                    lastAccessNanos = nanos;
+                }
+                return true;
+            } else {
+                int expect;
+                do {
+                    expect = size.get();
+                } while (expect < 0 && size.compareAndSet(expect, 0));
+            }
         }
         return false;
     }
