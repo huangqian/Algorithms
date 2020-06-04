@@ -61,6 +61,8 @@ import java.util.TreeMap;
 public class IntegerToRoman {
 
     /**
+     * 题解思路： 贪心算法，每次先除以最可除的最大数
+     *
      * @param num 被转化的整数，范围 1-3999之间
      * @return 返回罗马数字字符串
      */
