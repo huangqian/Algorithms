@@ -42,16 +42,25 @@ import org.junit.Test;
 public class DivideTwoIntegers {
 
     public int divide(int dividend, int divisor) {
-        if (Math.abs(dividend) < Math.abs(divisor)) return 0;
+        if (dividend == Integer.MIN_VALUE && divisor == -1)
+            return Integer.MAX_VALUE;
+
         boolean isMinus = (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0);
-        long absDividend = Math.abs(dividend);
-        long absDivisor = Math.abs(divisor);
-        long absVal = 0;
-        while (absDividend >= absDivisor) {
-            absVal++;
-            absDividend -= absDivisor;
+        dividend = -Math.abs(dividend);
+        divisor = -Math.abs(divisor);
+        int result = 0;
+        while (dividend <= divisor) {
+            int temp = divisor;
+            int c = 1;
+            while (dividend - temp <= temp) {
+                temp = temp << 1;
+                c = c << 1;
+            }
+            dividend -= temp;
+            result += c;
+
         }
-        return (int) (isMinus ? -absVal : absVal);
+        return isMinus ? result : -result;
     }
 
     @Test
